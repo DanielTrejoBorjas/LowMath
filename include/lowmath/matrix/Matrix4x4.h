@@ -1,11 +1,13 @@
 #pragma once
 
+#include <array>
+
 class Matrix4x4 {
 public:
-    float data[4][4];
+    std::array<std::array<float, 4>, 4> data;
 
     Matrix4x4();
-    Matrix4x4(const Matrix4x4& other);
+    Matrix4x4(const Matrix4x4& other) = default;
     Matrix4x4(const float* values);
     Matrix4x4(
         float a00, float a01, float a02, float a03,

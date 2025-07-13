@@ -6,7 +6,7 @@ public:
     float x, y, z, w;
 
     Vector4();
-    explicit Vector4(float x, float y, float z, float w);
+    Vector4(float x, float y, float z, float w);
 
     // Element-wise operators
     Vector4 operator+(const Vector4& other) const;

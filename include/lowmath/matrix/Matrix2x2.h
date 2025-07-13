@@ -1,11 +1,13 @@
 #pragma once
 
+#include <array>
+
 class Matrix2x2 {
 public:
-    float data[2][2];
+    std::array<std::array<float, 2>, 2> data;
 
     Matrix2x2();
-    Matrix2x2(const Matrix2x2& other);
+    Matrix2x2(const Matrix2x2& other) = default;
     Matrix2x2(const float* values);
     Matrix2x2(
         float a00, float a01,
@@ -17,6 +19,7 @@ public:
 
     Matrix2x2 operator*(const Matrix2x2& other) const;
     Matrix2x2 operator*(float scalar) const;
+    Matrix2x2 operator/(float scalar) const;
     Matrix2x2 operator+(const Matrix2x2& other) const;
     Matrix2x2 operator-(const Matrix2x2& other) const;
 

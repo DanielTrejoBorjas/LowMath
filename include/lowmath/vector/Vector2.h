@@ -5,7 +5,7 @@ public:
     float x, y;
 
     Vector2();
-    explicit Vector2(float x, float y);
+    Vector2(float x, float y);
 
     // Element-wise operators
     Vector2 operator+(const Vector2& other) const;

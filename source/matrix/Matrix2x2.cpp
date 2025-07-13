@@ -1,14 +1,9 @@
 #include <lowmath/matrix/Matrix2x2.h>
 
 Matrix2x2::Matrix2x2() {
-    data[0][0] = 1.0f; data[0][1] = 0.0f;
-    data[1][0] = 0.0f; data[1][1] = 1.0f;
-}
-
-Matrix2x2::Matrix2x2(const Matrix2x2& other) {
     for (int i = 0; i < 2; ++i)
         for (int j = 0; j < 2; ++j)
-            data[i][j] = other.data[i][j];
+            data[i][j] = (i == j) ? 1.0f : 0.0f;
 }
 
 Matrix2x2::Matrix2x2(const float* values) {
@@ -20,8 +15,8 @@ Matrix2x2::Matrix2x2(
     float a00, float a01,
     float a10, float a11
 ) {
-    data[0][0] = a00; data[0][1] = a01;
-    data[1][0] = a10; data[1][1] = a11;
+    data[0] = { a00, a01 };
+    data[1] = { a10, a11 };
 }
 
 Matrix2x2 Matrix2x2::identity() {
@@ -29,9 +24,9 @@ Matrix2x2 Matrix2x2::identity() {
 }
 
 Matrix2x2 Matrix2x2::zero() {
-    Matrix2x2 result;
-    result.data[0][0] = 0.0f; result.data[0][1] = 0.0f;
-    result.data[1][0] = 0.0f; result.data[1][1] = 0.0f;
+    Matrix2x2 result{};
+    for (auto& row : result.data)
+        row.fill(0.0f);
     return result;
 }
 
@@ -49,6 +44,14 @@ Matrix2x2 Matrix2x2::operator*(float scalar) const {
     for (int i = 0; i < 2; ++i)
         for (int j = 0; j < 2; ++j)
             result.data[i][j] = data[i][j] * scalar;
+    return result;
+}
+
+Matrix2x2 Matrix2x2::operator/(float scalar) const {
+    Matrix2x2 result;
+    for (int i = 0; i < 2; ++i)
+        for (int j = 0; j < 2; ++j)
+            result.data[i][j] = data[i][j] / scalar;
     return result;
 }
 
@@ -79,4 +82,3 @@ bool Matrix2x2::operator==(const Matrix2x2& other) const {
 bool Matrix2x2::operator!=(const Matrix2x2& other) const {
     return !(*this == other);
 }
-
