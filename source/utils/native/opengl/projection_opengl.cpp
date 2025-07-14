@@ -1,6 +1,6 @@
 
 #pragma once
-#include <lowmath/matrix/Matrix4x4.h>
+#include <LowMath/matrix/Matrix4x4.h>
 #include <cmath>
 
 namespace LowMath {
