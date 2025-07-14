@@ -1,5 +1,5 @@
 #include <iostream>
-#include <lowmath/vector/Vector.h>
+#include <LowMath/vector/Vector.h>
 
 void printVector(const Vector2& v, const std::string& name) {
     std::cout << name << ": (" << v.x << ", " << v.y << ")\n";
