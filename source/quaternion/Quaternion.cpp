@@ -37,5 +37,8 @@ namespace LowMath {
     bool Quaternion::operator!=(const Quaternion& other) const {
         return !(*this == other);
     }
+
+    //=========================UTILS=====================
+
 }
 

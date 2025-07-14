@@ -83,4 +83,29 @@ namespace LowMath {
     bool Matrix2x2::operator!=(const Matrix2x2& other) const {
         return !(*this == other);
     }
+
+    //============================UTILS============================
+    Matrix2x2 Matrix2x2::transposed() const {
+        Matrix2x2 result;
+        for (int row = 0; row < 2; ++row)
+            for (int col = 0; col < 2; ++col)
+                result.data[row][col] = data[col][row];
+        return result;
+    }
+
+    std::array<float, 4> Matrix2x2::toRowMajorArray() const {
+        std::array<float, 4> result{};
+        for (int row = 0; row < 2; ++row)
+            for (int col = 0; col < 2; ++col)
+                result[row * 2 + col] = data[row][col];
+        return result;
+    }
+
+    std::array<float, 4> Matrix2x2::toColumnMajorArray() const {
+        std::array<float, 4> result{};
+        for (int row = 0; row < 2; ++row)
+            for (int col = 0; col < 2; ++col)
+                result[col * 2 + row] = data[row][col];
+        return result;
+    }
 }

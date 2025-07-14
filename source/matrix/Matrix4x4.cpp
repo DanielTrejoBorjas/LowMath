@@ -88,4 +88,30 @@ namespace LowMath {
     bool Matrix4x4::operator!=(const Matrix4x4& other) const {
         return !(*this == other);
     }
+
+
+    //=============================UTILS=======================================
+    Matrix4x4 Matrix4x4::transposed() const {
+        Matrix4x4 result;
+        for (int row = 0; row < 4; ++row)
+            for (int col = 0; col < 4; ++col)
+                result.data[row][col] = data[col][row];
+        return result;
+    }
+
+    std::array<float, 16> Matrix4x4::toRowMajorArray() const {
+        std::array<float, 16> result{};
+        for (int row = 0; row < 4; ++row)
+            for (int col = 0; col < 4; ++col)
+                result[row * 4 + col] = data[row][col];
+        return result;
+    }
+
+    std::array<float, 16> Matrix4x4::toColumnMajorArray() const {
+        std::array<float, 16> result{};
+        for (int row = 0; row < 4; ++row)
+            for (int col = 0; col < 4; ++col)
+                result[col * 4 + row] = data[row][col];
+        return result;
+    }
 }

@@ -28,5 +28,13 @@ namespace LowMath {
 
         bool operator==(const Matrix4x4& other) const;
         bool operator!=(const Matrix4x4& other) const;
+
+
+        //====================UTILS======================
+
+        Matrix4x4 transposed() const;
+
+        std::array<float, 16> toRowMajorArray() const;
+        std::array<float, 16> toColumnMajorArray() const;
     };
 }

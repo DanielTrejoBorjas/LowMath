@@ -86,4 +86,30 @@ namespace LowMath {
     bool Matrix3x3::operator!=(const Matrix3x3& other) const {
         return !(*this == other);
     }
+
+    //=====================UTILS=============================
+
+    Matrix3x3 Matrix3x3::transposed() const {
+        Matrix3x3 result;
+        for (int row = 0; row < 3; ++row)
+            for (int col = 0; col < 3; ++col)
+                result.data[row][col] = data[col][row];
+        return result;
+    }
+
+    std::array<float, 9> Matrix3x3::toRowMajorArray() const {
+        std::array<float, 9> result{};
+        for (int row = 0; row < 3; ++row)
+            for (int col = 0; col < 3; ++col)
+                result[row * 3 + col] = data[row][col];
+        return result;
+    }
+
+    std::array<float, 9> Matrix3x3::toColumnMajorArray() const {
+        std::array<float, 9> result{};
+        for (int row = 0; row < 3; ++row)
+            for (int col = 0; col < 3; ++col)
+                result[col * 3 + row] = data[row][col];
+        return result;
+    }
 }
